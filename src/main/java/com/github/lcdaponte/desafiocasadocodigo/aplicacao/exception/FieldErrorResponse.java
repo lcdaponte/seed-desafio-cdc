@@ -1,0 +1,23 @@
+package com.github.lcdaponte.desafiocasadocodigo.aplicacao.exception;
+
+public class FieldErrorResponse {
+	
+	private String field;
+    private String message;
+
+    FieldErrorResponse() { }
+
+    public FieldErrorResponse(String field, String message) {
+        this.field = field;
+        this.message = message;
+    }
+
+    public String getField() {
+        return field;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+}
