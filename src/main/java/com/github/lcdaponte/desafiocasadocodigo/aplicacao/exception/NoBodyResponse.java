@@ -1,10 +1,10 @@
 package com.github.lcdaponte.desafiocasadocodigo.aplicacao.exception;
 
-public class NoBodyException {
+public class NoBodyResponse {
 	
 	private String message;
 	
-	public NoBodyException(final String message) {
+	public NoBodyResponse(final String message) {
 		this.message = message;
 	}
 

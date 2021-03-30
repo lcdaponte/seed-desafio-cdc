@@ -32,10 +32,20 @@ public class WebServiceHandler {
 	
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(HttpMessageNotReadableException.class)
-	public NoBodyException handleValidationError(HttpMessageNotReadableException exception) {
+	public NoBodyResponse handleValidationError(HttpMessageNotReadableException exception) {
 		
 		
-		return new NoBodyException("O body da requisição é obrigatório e não foi envidado");
+		return new NoBodyResponse("O body da requisição é obrigatório e não foi envidado");
+		
+	}
+	
+	
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(AutorAlreadyExistsException.class)
+	public AutorAlreadyExistsResponse handleValidationError(AutorAlreadyExistsException exception) {
+		
+		
+		return new AutorAlreadyExistsResponse("Autor já cadastrado com o email informado");
 		
 	}
 	
