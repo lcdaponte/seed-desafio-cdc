@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.lcdaponte.desafiocasadocodigo.aplicacao.exception.CategoriaAlreadyExistsException;
 import com.github.lcdaponte.desafiocasadocodigo.aplicacao.response.Response;
 import com.github.lcdaponte.desafiocasadocodigo.aplicacao.service.ICategoriaService;
 import com.github.lcdaponte.desafiocasadocodigo.aplicacao.ws.v1.rs.model.request.CadastrarCategoriasRequest;
@@ -28,7 +27,7 @@ public class CategoriaControllerV1RS {
 	}
 	
 	@RequestMapping(value = "", method = POST)
-	public ResponseEntity<Response<UUID>> cadastrar(@RequestBody @Valid final CadastrarCategoriasRequest cadastrarCategoriasRequest) throws CategoriaAlreadyExistsException {
+	public ResponseEntity<Response<UUID>> cadastrar(@RequestBody @Valid final CadastrarCategoriasRequest cadastrarCategoriasRequest) {
 		
 		UUID uuid = this.categoriaService.cadastrar(cadastrarCategoriasRequest);
 		

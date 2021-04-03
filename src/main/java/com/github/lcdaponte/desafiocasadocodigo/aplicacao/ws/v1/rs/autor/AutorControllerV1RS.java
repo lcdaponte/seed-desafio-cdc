@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.lcdaponte.desafiocasadocodigo.aplicacao.exception.AutorAlreadyExistsException;
 import com.github.lcdaponte.desafiocasadocodigo.aplicacao.response.Response;
 import com.github.lcdaponte.desafiocasadocodigo.aplicacao.service.IAutorService;
 import com.github.lcdaponte.desafiocasadocodigo.aplicacao.ws.v1.rs.model.request.CriarAutorRequest;
@@ -38,7 +37,7 @@ public class AutorControllerV1RS {
 	
 	
 	@RequestMapping(value = "", method = POST)
-	public ResponseEntity<Response<UUID>> cadastrarAutor(@RequestBody @Valid final CriarAutorRequest autorRequest) throws AutorAlreadyExistsException {
+	public ResponseEntity<Response<UUID>> cadastrarAutor(@RequestBody @Valid final CriarAutorRequest autorRequest){
 		
 		log.debug("autordto: {}", autorRequest);
 		

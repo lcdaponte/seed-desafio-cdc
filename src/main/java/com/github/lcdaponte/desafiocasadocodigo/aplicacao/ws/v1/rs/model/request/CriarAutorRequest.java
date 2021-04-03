@@ -5,6 +5,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.lcdaponte.desafiocasadocodigo.aplicacao.validators.UniqueValue;
+import com.github.lcdaponte.desafiocasadocodigo.persistence.jpa.Autor;
 
 public class CriarAutorRequest {
 	
@@ -14,6 +16,7 @@ public class CriarAutorRequest {
 	@JsonProperty("email")
 	@Email
 	@NotBlank
+	@UniqueValue(domainClass = Autor.class, fieldName = "email", message = "Já existe um Autor cadastrado com o email '${validatedValue}'")
 	private String email;
 	@JsonProperty("descricao")
 	@NotBlank
