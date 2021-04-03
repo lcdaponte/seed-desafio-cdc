@@ -24,7 +24,7 @@ public class AutorService implements IAutorService{
 	}
 
 	@Override
-	public UUID cadastrarAutor(final CriarAutorRequest autorRequest) throws AutorAlreadyExistsException {
+	public UUID cadastrar(final CriarAutorRequest autorRequest) throws AutorAlreadyExistsException {
 		
 		Optional<Autor> autorPorEmail = autorRepository.buscarAutorPorEmail(autorRequest.getEmail());
 		

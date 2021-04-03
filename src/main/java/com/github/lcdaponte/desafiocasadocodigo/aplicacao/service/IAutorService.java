@@ -7,6 +7,6 @@ import com.github.lcdaponte.desafiocasadocodigo.aplicacao.ws.v1.rs.model.request
 
 public interface IAutorService {
 	
-	UUID cadastrarAutor(final CriarAutorRequest autorRequest) throws AutorAlreadyExistsException;
+	UUID cadastrar(final CriarAutorRequest autorRequest) throws AutorAlreadyExistsException;
 
 }

@@ -51,7 +51,7 @@ public class AutorServiceTest {
 		when(autorRepository.buscarAutorPorEmail("lucas@email.com")).thenReturn(Optional.of(autor));
 		doNothing().when(autorRepository).cadastrarAutor(uuid, autorDTO);
 		
-		assertThrows(AutorAlreadyExistsException.class, () -> autorService.cadastrarAutor(request));
+		assertThrows(AutorAlreadyExistsException.class, () -> autorService.cadastrar(request));
 	}
 	
 	@Test
@@ -63,7 +63,7 @@ public class AutorServiceTest {
 		when(autorRepository.buscarAutorPorEmail(autorDTO.getEmail())).thenReturn(Optional.empty());
 		doNothing().when(autorRepository).cadastrarAutor(uuid, autorDTO);
 		
-		UUID uuidAutor = autorService.cadastrarAutor(request);
+		UUID uuidAutor = autorService.cadastrar(request);
 		
 		assertNotNull(uuidAutor);
 	}

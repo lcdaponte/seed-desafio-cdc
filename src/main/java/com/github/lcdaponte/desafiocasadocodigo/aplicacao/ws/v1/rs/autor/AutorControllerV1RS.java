@@ -42,7 +42,7 @@ public class AutorControllerV1RS {
 		
 		log.debug("autordto: {}", autorRequest);
 		
-		UUID autorUuid = autorService.cadastrarAutor(autorRequest);
+		UUID autorUuid = autorService.cadastrar(autorRequest);
 		
 		return new ResponseEntity<>(new Response<>(autorUuid), HttpStatus.OK);
 	}

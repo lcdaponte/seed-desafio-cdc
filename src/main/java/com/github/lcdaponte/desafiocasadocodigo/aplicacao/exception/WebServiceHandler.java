@@ -43,10 +43,13 @@ public class WebServiceHandler {
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(AutorAlreadyExistsException.class)
 	public AutorAlreadyExistsResponse handleValidationError(AutorAlreadyExistsException exception) {
-		
-		
 		return new AutorAlreadyExistsResponse("Autor já cadastrado com o email informado");
-		
+	}
+	
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(CategoriaAlreadyExistsException.class)
+	public CategoriaAlreadyExistsResponse handleValidationError(CategoriaAlreadyExistsException exception) {
+		return new CategoriaAlreadyExistsResponse("Categoria já cadastrada com o nome informado");
 	}
 	
 	
