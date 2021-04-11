@@ -40,6 +40,37 @@ public class Categoria {
 		this.uuid = uuid;
 		this.dataCricao = LocalDateTime.now();
 	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public UUID getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(UUID uuid) {
+		this.uuid = uuid;
+	}
+
+	public LocalDateTime getDataCricao() {
+		return dataCricao;
+	}
+
+	public void setDataCricao(LocalDateTime dataCricao) {
+		this.dataCricao = dataCricao;
+	}
+
+	@Override
+	public String toString() {
+		return "Categoria [nome=" + nome + ", uuid=" + uuid + ", dataCricao=" + dataCricao + "]";
+	}
+	
+	
 	
 	
 }

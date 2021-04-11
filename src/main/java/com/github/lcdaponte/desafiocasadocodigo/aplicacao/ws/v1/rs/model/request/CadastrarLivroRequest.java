@@ -2,15 +2,19 @@ package com.github.lcdaponte.desafiocasadocodigo.aplicacao.ws.v1.rs.model.reques
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.UUID;
 
 import javax.validation.constraints.Future;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 
+import com.github.lcdaponte.desafiocasadocodigo.aplicacao.validators.EntityExists;
 import com.github.lcdaponte.desafiocasadocodigo.aplicacao.validators.UniqueValue;
+import com.github.lcdaponte.desafiocasadocodigo.persistence.jpa.Autor;
+import com.github.lcdaponte.desafiocasadocodigo.persistence.jpa.Categoria;
 import com.github.lcdaponte.desafiocasadocodigo.persistence.jpa.Livro;
 
 public class CadastrarLivroRequest {
@@ -19,8 +23,8 @@ public class CadastrarLivroRequest {
 	@UniqueValue(domainClass = Livro.class, fieldName = "titulo")
 	private String titulo;
 	
+	@Size(min = 50, max = 500)
 	@NotBlank
-	@Max(value = 500)
 	private String resumo;
 	
 	private String sumario;
@@ -43,11 +47,13 @@ public class CadastrarLivroRequest {
 	@Future
 	private LocalDate dataPublicacao;
 	
-	@NotBlank
-	private String uuidcategoria;
+	@NotNull
+	@EntityExists(domainClass = Categoria.class, fieldName = "uuid")
+	private UUID uuidcategoria;
 	
-	@NotBlank
-	private String uuidautor;
+	@NotNull
+	@EntityExists(domainClass = Autor.class, fieldName = "uuid")
+	private UUID uuidautor;
 
 	public CadastrarLivroRequest() {
 	}
@@ -108,19 +114,19 @@ public class CadastrarLivroRequest {
 		this.dataPublicacao = dataPublicacao;
 	}
 
-	public String getUuidcategoria() {
+	public UUID getUuidcategoria() {
 		return uuidcategoria;
 	}
 
-	public void setUuidcategoria(String uuidcategoria) {
+	public void setUuidcategoria(UUID uuidcategoria) {
 		this.uuidcategoria = uuidcategoria;
 	}
 
-	public String getUuidautor() {
+	public UUID getUuidautor() {
 		return uuidautor;
 	}
 
-	public void setUuidautor(String uuidautor) {
+	public void setUuidautor(UUID uuidautor) {
 		this.uuidautor = uuidautor;
 	}
 

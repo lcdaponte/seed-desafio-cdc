@@ -6,15 +6,15 @@ import org.springframework.stereotype.Service;
 
 import com.github.lcdaponte.desafiocasadocodigo.aplicacao.ws.v1.rs.model.request.CadastrarCategoriasRequest;
 import com.github.lcdaponte.desafiocasadocodigo.persistence.jpa.Categoria;
-import com.github.lcdaponte.desafiocasadocodigo.persistence.respository.categoria.CategoriaRepository;
+import com.github.lcdaponte.desafiocasadocodigo.persistence.respository.categoria.ICategoriaRepository;
 
 @Service
 public class CategoriaService implements ICategoriaService{
 	
-	private CategoriaRepository categoriaRepository;
+	private ICategoriaRepository categoriaRepository;
 	
 
-	public CategoriaService(CategoriaRepository categoriaRepository) {
+	public CategoriaService(ICategoriaRepository categoriaRepository) {
 		this.categoriaRepository = categoriaRepository;
 	}
 

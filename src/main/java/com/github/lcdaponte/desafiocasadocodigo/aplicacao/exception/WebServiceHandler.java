@@ -37,6 +37,9 @@ public class WebServiceHandler {
 	}
 	
 	
+	
+	
+	
 	private ValidationErrorsResponse buildValidationErrors(List<ObjectError> globalErrors,
 			List<FieldError> fieldErrors) {
 		ValidationErrorsResponse validationErrors = new ValidationErrorsResponse();

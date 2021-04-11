@@ -3,15 +3,16 @@ package com.github.lcdaponte.desafiocasadocodigo.persistence.respository.autor;
 import java.util.Optional;
 import java.util.UUID;
 
-import com.github.lcdaponte.desafiocasadocodigo.aplicacao.ws.v1.rs.dto.AutorDTO;
+import org.springframework.data.repository.CrudRepository;
+
 import com.github.lcdaponte.desafiocasadocodigo.persistence.jpa.Autor;
 
 
 
-public interface IAutorRepository {
+public interface IAutorRepository extends CrudRepository<Autor, Long>{
 	
-	Optional<Autor> buscarAutorPorEmail(final String email);
+	Optional<Autor> findByEmail(final String email);
 	
-	void cadastrarAutor(final UUID uuid, final AutorDTO autorDto);
+	Optional<Autor> findByUuid(UUID uuid);
 
 }

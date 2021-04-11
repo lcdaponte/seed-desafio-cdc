@@ -33,7 +33,7 @@ public class Autor {
 	@Column(name = "data_criacao")
 	private LocalDateTime dataCricao;
 	
-	
+	@Deprecated
 	public Autor() {
 		
 	}
@@ -44,6 +44,54 @@ public class Autor {
 		this.email = email;
 		this.descricao = descricao;
 		this.dataCricao = dataCricao;
+	}
+	
+	
+
+	public UUID getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(UUID uuid) {
+		this.uuid = uuid;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public LocalDateTime getDataCricao() {
+		return dataCricao;
+	}
+
+	public void setDataCricao(LocalDateTime dataCricao) {
+		this.dataCricao = dataCricao;
+	}
+
+	@Override
+	public String toString() {
+		return "Autor [uuid=" + uuid + ", nome=" + nome + ", email=" + email + ", descricao=" + descricao
+				+ ", dataCricao=" + dataCricao + "]";
 	}
 	
 	
