@@ -2,6 +2,7 @@ package com.github.lcdaponte.desafiocasadocodigo.aplicacao.ws.v1.rs.livro;
 
 import static com.github.lcdaponte.desafiocasadocodigo.aplicacao.ws.v1.rs.livro.LivroControllerV1RS.NOME_SERVICO;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.validation.Valid;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.lcdaponte.desafiocasadocodigo.aplicacao.response.Response;
 import com.github.lcdaponte.desafiocasadocodigo.aplicacao.service.ILivroService;
 import com.github.lcdaponte.desafiocasadocodigo.aplicacao.ws.v1.rs.autor.AutorControllerV1RS;
+import com.github.lcdaponte.desafiocasadocodigo.aplicacao.ws.v1.rs.dto.LivroDTO;
 import com.github.lcdaponte.desafiocasadocodigo.aplicacao.ws.v1.rs.model.request.CadastrarLivroRequest;
 
 @RestController
@@ -34,6 +36,16 @@ public class LivroControllerV1RS {
 	}
 	
 	
+	@RequestMapping(value = "", method = RequestMethod.GET)
+	public ResponseEntity<Response<List<LivroDTO>>> listarTodos() {
+		
+		
+		List<LivroDTO> livros = livroService.listarTodos();
+		
+		return new ResponseEntity<>(new Response<>(livros), HttpStatus.OK);
+	}
+	
+	
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public ResponseEntity<Response<UUID>> cadastrar(@Valid @RequestBody final CadastrarLivroRequest livrorequest) {
 		
@@ -45,5 +57,8 @@ public class LivroControllerV1RS {
 		
 		return new ResponseEntity<>(new Response<>(uuid), HttpStatus.OK);
 	}
+	
+	
+	
 
 }

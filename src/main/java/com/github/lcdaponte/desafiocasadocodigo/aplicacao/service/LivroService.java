@@ -1,10 +1,14 @@
 package com.github.lcdaponte.desafiocasadocodigo.aplicacao.service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.github.lcdaponte.desafiocasadocodigo.aplicacao.ws.v1.rs.dto.LivroDTO;
+import com.github.lcdaponte.desafiocasadocodigo.aplicacao.ws.v1.rs.dto.LivroDtoBuilder;
 import com.github.lcdaponte.desafiocasadocodigo.aplicacao.ws.v1.rs.model.request.CadastrarLivroRequest;
 import com.github.lcdaponte.desafiocasadocodigo.persistence.jpa.Autor;
 import com.github.lcdaponte.desafiocasadocodigo.persistence.jpa.Categoria;
@@ -41,6 +45,19 @@ public class LivroService implements ILivroService{
 		
 		return uuid;			
 		
+	}
+
+	@Override
+	public List<LivroDTO> listarTodos() {
+		List<Livro> livros = livroRepository.findAll();
+		
+		List<LivroDTO> livrosDto = livros.stream().map(livro -> new LivroDtoBuilder()
+				.comNome(livro.getTitulo())
+				.comUuid(livro.getUuid())
+				.build())
+		.collect(Collectors.toList());
+		
+		return livrosDto;
 	}
 
 }
